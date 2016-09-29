@@ -1,0 +1,6 @@
+HW 2: Requirements Elicitation
+
+• Study your project description and explore related information.
+• Prepare your initial requirements draft.
+• Prepare questions for your customer, so as to complete your requirements.
+• Document your questions an research material on your project repository.

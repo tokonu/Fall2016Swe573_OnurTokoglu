@@ -23,7 +23,6 @@ def main():
 def showSignUp():
     return render_template('signup.html')
 
-
 @app.route('/signUp',methods=['POST','GET'])
 def signUp():
     try:
@@ -56,5 +55,33 @@ def signUp():
         cursor.close() 
         conn.close()
 
+
+
+#url variables
+@app.route('/user/<username>')
+def user(username):
+    return username
+
+#for data other than string datatype has to be declared
+@app.route('/id/<int:id>')
+def user(id):
+    return id
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

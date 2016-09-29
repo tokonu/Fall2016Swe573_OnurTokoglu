@@ -1,0 +1,17 @@
+Hw 1 Initial Setup of Project Repository and Research
+
+1. Setup your project repository by creating a space on GitHub. The name of your repo should start with Fall2016Swe573.
+
+2. Send me a message using Piazza to inform me of your project repository. You must add me as a member of your repository.
+
+3. Modify the main page to describe what this repository is about. (In the future these descriptions will be motified). Use the Markdown language in creating content.
+
+4. Research how to create a web server with Java or Python. 
+
+5. Customize your issue management system to suit a software project for a client server application with user genereated content. Document how the system is to be used.
+
+6. Create at least one issue on your project repository (about doing the research for example).
+
+7. Document your research on your project repository.
+
+8. Update the relevant issue(s).

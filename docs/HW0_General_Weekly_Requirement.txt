@@ -1,0 +1,32 @@
+IMPORTANT – The following is a semester long homework (from now until final deployment)
+
+Every week we will be discussing issue related to the development lifecycle. Estimating the work to be done and the effort it takes is an important issue. For this reason you will be continuously tracking this information. The issue management system is very useful in helping with this.
+
+Also, we will use the project repository continuously to document all relevant information. We call this "constant gardening". You are expected to use it frequently and use it effectively (apply good use practice).
+
+More specificallty the following are expected on an ongoing basis:
+
+A Tracking Work
+
+◦ Create issues in your project repository, make sure you track the time you spend on issues.
+
+◦ Document the estimated and actual effort associated with the work (task) done that week.
+
+You must have at least the following information about work
+
+	▪ Description of the work
+	▪ Category/Type of work (UI, research, development,... )
+	▪ estimated time
+	▪ actual time
+	▪ status
+
+◦ Cumulative work until present date:
+	▪ estimated
+	▪ actual
+	▪ category/type
+
+B Keeping Project Repository Up To Date
+
+Document your notes (research, related links, descriptions, requirements, design, etc.) on
+your project repository. 
+

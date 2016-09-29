@@ -9,3 +9,4 @@ Further reference:
 
 Jinja tutorial - https://realpython.com/blog/python/primer-on-jinja-templating/
 
+Github markdown cheatsheet - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
