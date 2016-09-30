@@ -3,7 +3,7 @@
 1. User Profile Related
     - 1.1 User will register to the system
     - 1.2 User will input (Date of Birth, Gender, Height, Weight) information upon registration and will be able to modify these fields later.
-        - 1.2.1 Historical data of weight info will not be kept
+        - 1.2.1 Historical data of weight info will be kept
         - 1.2.2 Body Mass Index (BMI) will be calculated using Mass(kg)/Height(m)^2 
         - 1.2.3 Daily calorie requirement will be calculated (see 4.1.2)
 2. Nutrition Related
