@@ -36,6 +36,7 @@
 5. Other
     - 5.1 Backend will be developed using Python+Flask
     - 5.2 Frontend requirements not specified, will be decided
+    - 5.3 Deadline is end of december 2016
         
         
 # Questions
@@ -53,6 +54,7 @@
     - Should we keep protein, lipid etc info seperately (vitamins, minerals?) or just kcal?
     - Should we do search recommendation while the user is typing
     - Should we suggest previously entered foods
+    - Input for past dates?
     
 ### Related to 3
     - Should we aggregate similar activities while reporting? (Walking 1mph and Walking 2 mph)
@@ -61,7 +63,8 @@
     - Should we provide time information will be provided on selected food entries (i.e. select cheese and see the dates you have eaten cheese)
     - Should we provide hour based information (i.e. 300 kcal at 1pm, 500 kcal at 5pm)
     
-    
+### Related to 5
+    - Do we need to make this mobile friendly
     
     
     
