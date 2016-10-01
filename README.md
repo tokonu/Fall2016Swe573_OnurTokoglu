@@ -5,4 +5,6 @@ Fall 2016 Software Development Practice project repo - [Project Description](doc
 
 [Requirements](research/requirements.md)
 
+[Mockup](https://ninjamock.com/s/2CQRF)
+
 [Test App](research/TestApp) - An example web server with Python with Flask
