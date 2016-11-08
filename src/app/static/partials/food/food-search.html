@@ -1,0 +1,51 @@
+<p>food-search</p>
+
+<div id="foodSearch">
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="searchQuery">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="foodSearchButton"  ng-click="searchFoods()" data-loading-text="Loading...">Search</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="food in foodList">
+        <div class="row">
+            <div class="col-md-10" style="border: 1px solid;border-color: #1a1a1a">
+                <div class="input-group">
+                    <label>{{ food.name }}</label>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="foodClicked(food.ndbno)">v</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="nutrient-detail" ng-class="{'nutrient-detail-hide': !nutrientSectionVisible[food.ndbno], 'nutrient-detail-show': nutrientSectionVisible[food.ndbno]}">
+            <div>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Group</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="nutrient in nutrientReport[food.ndbno].nutrients">
+                                <td>{{ nutrient.group }}</td>
+                                <td>{{ nutrient.name }}</td>
+                                <td>{{ nutrient.value }} {{ nutrient.unit }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

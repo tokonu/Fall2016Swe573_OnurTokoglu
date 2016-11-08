@@ -1,0 +1,138 @@
+/* Topbar Left */
+
+#topbar {
+    display: flex;
+}
+#topbar-left {
+    background-color: #2a85a0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+#topbar-left .name-row .user-icon {
+    float: left;
+}
+#topbar-left .name-row h1 {
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#topbar-left .name-row .gear-icon {
+    float: right;
+    cursor: pointer;
+}
+#topbar-left .icon-row-1 {
+    padding-top: 30px;
+}
+#topbar-left .icon-row-1 .weight-icon {
+    float: left;
+}
+#topbar-left .icon-row-1 p.weight {
+    margin-left: 30px;
+    float: left;
+    font-size: 22px;
+}
+#topbar-left .icon-row-1 .height-icon {
+    float: left;
+}
+#topbar-left .icon-row-1 p.height {
+    margin-left: 30px;
+    float: left;
+    font-size: 22px;
+}
+#topbar-left .icon-row-2 {
+    padding-top: 30px;
+}
+#topbar-left .icon-row-2 .bmi-icon {
+    float: left;
+}
+#topbar-left .icon-row-2 p.bmi {
+    margin-left: 30px;
+    float: left;
+    font-size: 22px;
+}
+#topbar-left .icon-row-2 .birthday-icon {
+    float: left;
+}
+#topbar-left .icon-row-2 p.birthday {
+    margin-left: 30px;
+    float: left;
+    font-size: 22px;
+}
+#topbar-left .icon-row-3 {
+    padding-top: 30px;
+}
+#topbar-left .icon-row-3 .note-icon {
+    float: left;
+}
+#topbar-left .icon-row-3 p.notes {
+    margin-left: 30px;
+    float: left;
+    font-size: 22px;
+}
+
+
+/* Edit Modal */
+
+#editModal form .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#editModal form input.weight, #editModal form input.height {
+    width: 60px;
+}
+#editModal b.unit {
+    position: absolute;
+    bottom: 0px;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+
+/* Topbar Right */
+
+#topbar-right {
+    background-color: #3C8FA0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* Eat */
+
+/* Food Search */
+
+
+#foodSearch .nutrient-detail-show {
+    height: 100px;
+    visibility: visible;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+#foodSearch .nutrient-detail-hide {
+    height: 0px;
+    visibility: hidden;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

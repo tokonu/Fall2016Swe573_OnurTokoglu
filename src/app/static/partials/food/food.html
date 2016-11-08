@@ -1,0 +1,14 @@
+<p>food</p>
+<a ui-sref=".search" class="btn btn-primary">search</a>
+<a ui-sref=".myfoods" class="btn btn-primary">myfoods</a>
+<a ui-sref=".mymeals" class="btn btn-primary">my meals</a>
+
+<div class="row">
+    <div class="col-md-8">
+        <div ui-view></div>
+    </div>
+
+    <div class="col-md-4">
+        <div ui-view="mealbox"></div>
+    </div>
+</div>

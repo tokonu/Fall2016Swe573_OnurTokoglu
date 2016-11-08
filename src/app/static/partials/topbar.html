@@ -1,0 +1,157 @@
+<div id="topbar" class="row">
+
+    <div id="topbar-left" class="col-md-5">
+        <div class="row name-row">
+            <span class="fa fa-user fa-4x user-icon"></span>
+            <h1>{{ user.name }}</h1>
+            <span class="fa fa-cog fa-3x gear-icon" data-toggle="modal" data-target="#editModal" ng-click="resetForm()"></span>
+        </div>
+
+        <div class="row icon-row-1">
+            <div class="col-md-6">
+                <span class="fa fa-balance-scale fa-2x weight-icon"></span>
+                <p class="weight">{{ user.weight }} kg</p>
+            </div>
+            <div class="col-md-6">
+                <span class="fa fa-arrows-v fa-2x height-icon"></span>
+                <p class="height">{{ user.height }} cm</p>
+            </div>
+        </div>
+
+        <div class="row icon-row-2">
+            <div class="col-md-6">
+                <span class="fa fa-calculator fa-2x bmi-icon"></span>
+                <p class="bmi"><b>BMI:</b> {{ user.bmi() }}</p>
+            </div>
+            <div class="col-md-6">
+                <span class="fa fa-birthday-cake fa-2x birthday-icon"></span>
+                <p class="birthday">{{ user.birthday }}</p>
+            </div>
+        </div>
+
+        <div class="row icon-row-3">
+            <div class="col-md-12">
+                <span class="fa fa-sticky-note fa-2x note-icon"></span>
+                <p class="notes"><b>Notes:</b> {{ user.notes }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="topbar-right" class="col-md-7">
+        calories
+    </div>
+
+
+</div>
+
+
+
+<!-- Edit Modal -->
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Profile Info</h4>
+      </div>
+      <form name="form" class="css-form" novalidate>
+          <div class="modal-body">
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Email</span>
+                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="email" ng-model="updatedUser.email" value="{{ updatedUser.email }}" >
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Password</span>
+                          <input type="password" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="password" ng-model="updatedUser.password" placeholder="Change Password" >
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Name</span>
+                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="name" ng-model="updatedUser.name" value="{{ updatedUser.name }}" >
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                          <div class="input-group">
+                              <span class="input-group-addon" id="basic-addon3">Birthday</span>
+                              <input class="form-control" name="birthday" placeholder="Choose a date" ng-model="updatedUser.birthday" value="{{ user.birthday }}"/>
+                              <span class="input-group-addon" style="cursor: pointer">
+                                  <i class="fa fa-lg fa-calendar"></i>
+                              </span>
+                          </div>
+                      </datepicker>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Weight</span>
+                          <input type="text" class="form-control weight" id="basic-url" aria-describedby="basic-addon3" name="weight" ng-model="updatedUser.weight" value="{{ updatedUser.weight }}" >
+                          <b class="unit">kg</b>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Height</span>
+                          <input type="text" class="form-control height" id="basic-url" aria-describedby="basic-addon3" name="height" ng-model="updatedUser.height" value="{{ updatedUser.height }}" >
+                          <b class="unit">cm</b>
+                      </div>
+                  </div>
+                  <div class="col-md-4 radio">
+                      <label>
+                      <input type="radio" name="gender" id="optionsRadios1" value="M" ng-model="updatedUser.gender" checked>Male
+                          </label>
+                      <label>
+                      <input type="radio" name="gender" id="optionsRadios1" value="F" ng-model="updatedUser.gender" >Female</label>
+                  </div>
+              </div>
+
+              <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon3">Notes</span>
+                  <textarea type="text" class="form-control" id="basic-url" rows="3" aria-describedby="basic-addon3" name="notes" ng-model="updatedUser.notes" value="{{ updatedUser.notes }}"></textarea>
+              </div>
+
+              <p ng-show="formError">Err: {{ formError }}</p>
+
+          <div class="modal-footer">
+              <input type="button" class="btn btn-default"  value="Reset" ng-click="resetForm()"/>
+              <input id="profileSubmitButton" type="submit" ng-click="sendForm()" class="btn btn-primary" value="Save Changes" data-loading-text="Loading..." />
+
+          </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
