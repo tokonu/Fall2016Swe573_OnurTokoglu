@@ -9,4 +9,7 @@ Further reference:
 
 Jinja tutorial - https://realpython.com/blog/python/primer-on-jinja-templating/
 
+Another tutorial - http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
+- https://blog.openshift.com/use-flask-login-to-add-user-authentication-to-your-python-application/
+
 Github markdown cheatsheet - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
