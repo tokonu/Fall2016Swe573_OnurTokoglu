@@ -1,26 +1,27 @@
 'use strict';
 
-app.controller('FoodSearchCtrl',function ($scope, UserInfoService, $http) {
+app.controller('FoodSearchCtrl',function ($scope, MealBoxService, $http) {
     $scope.searchQuery = "";
-    $scope.foodList = [{
-        name: "FoodName",
-        ndbno: "45051439"
-    },
-    {
-        name: "FoodName2",
-        ndbno: "ndbno2"
-    },
-    {
-        name: "FoodName3",
-        ndbno: "ndbno3"
-    },
-    {
-        name: "FoodName4",
-        ndbno: "ndbno4"
-    }];
+    $scope.foodList = {
+        ndbno1 : {
+            name: "Food 1",
+            ndbno: "ndbno1"
+        },
+        ndbno2 : {
+            name: "Food 2",
+            ndbno: "ndbno2"
+        },
+        ndbno3 : {
+            name: "Food 3",
+            ndbno: "ndbno3"
+        }
+    };
 
-    $scope.nutrientReport = {};
-    $scope.nutrientSectionVisible = {};
+
+
+
+    //$scope.nutrientReport = {};
+    //$scope.nutrientSectionVisible = {};
 
     $scope.searchFoods = function() {
         var qStr = $scope.searchQuery;
@@ -47,44 +48,61 @@ app.controller('FoodSearchCtrl',function ($scope, UserInfoService, $http) {
 
     };
 
-    $scope.foodClicked = function (ndbno) {
-        if ($scope.nutrientSectionVisible[ndbno]){
-            $scope.nutrientSectionVisible[ndbno] = false;
+    $scope.foodClicked = function (food) {
+        if (food.nutrientsVisible){
+            food.nutrientsVisible = false;
             return;
         }
-        if ($scope.nutrientReport[ndbno]){
-            $scope.nutrientSectionVisible[ndbno] = true;
+        if (food.nutrients){
+            food.nutrientsVisible = true;
         }else{
-            getNutrients(ndbno, function (done) {
+            getNutrients(food, function (done) {
                 if (done){
-                    $scope.nutrientSectionVisible[ndbno] = true;
+                    food.nutrientsVisible = true;
                 }
             });
         }
     };
 
-    var getNutrients = function(ndbno, callback){
+    var getNutrients = function(food, callback){
         //setLoading();
 
-        // $http.post('/userarea/getNutrients', {ndbno:ndbno})
+        // $http.post('/userarea/getNutrients', {ndbno:food.ndbno})
         //     .success(function (data) {
         //         stopLoading();
         //         if (data.error){
         //             alert(data.error);
         //         }else if (data) {
-        //
+        //             data.selectedMeasure = data.measures[0];
+        //             //data.selectedMeasure.input = 100;
+        //             food.nutrients = data.nutrients;
+        //             food.measures = data.measures;
+        //             food.selectedMeasure = data.measures[0];
+        //             callback(true);
         //         }
-        //         alert(JSON.stringify(data, null, 4));
+        //         //alert(JSON.stringify(data, null, 4));
         //     })
         //     .error(function (err) {
         //         alert(err);
         //         stopLoading();
         //     });
 
-        $scope.nutrientReport[ndbno] = dummydata;
+        dummydata.selectedMeasure = dummydata.measures[0];
+        food.nutrients = JSON.parse(JSON.stringify(dummydata.nutrients)); //dummydata;
+        food.nutrients[0].unit = food.ndbno;
+        food.measures = JSON.parse(JSON.stringify(dummydata.measures));
+        food.selectedMeasure = JSON.parse(JSON.stringify(dummydata.measures[0]));
         callback(true);
     };
 
+    $scope.getMultiplier = function(food){
+        var selected = food.selectedMeasure;
+        return selected.qty * selected.eqv/100;
+    }
+
+    $scope.addToMealbox = function(food){
+        MealBoxService.addFood(food);
+    };
 
     var setLoading = function () {
         $(function () {
@@ -102,10 +120,13 @@ app.controller('FoodSearchCtrl',function ($scope, UserInfoService, $http) {
     var dummydata = {
     "measures": [
         {
-            "eqv": 114,
+            "eqv": 1,
             "label": "g",
-            "qty": 114,
-            "value": "170"
+            "qty": 100
+        },{
+            "eqv": 200,
+            "label": "slice",
+            "qty": 1
         }
     ],
     "ndbno": "45051439",

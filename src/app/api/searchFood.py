@@ -12,14 +12,15 @@ def searchFood():
     if not queryString or len(queryString) < 4:
         return jsonify(error="Enter valid string")
 
-    foodArray = [];
+    foodList = {};
     foodJsons = FCD.find(queryString)
 
     for foodJson in foodJsons:
+        ndbno = foodJson['ndbno']
         food = {};
         food['name'] = foodJson['name']
-        food['ndbno'] = foodJson['ndbno']
-        foodArray.append(food)
+        food['ndbno'] = ndbno
+        foodList[ndbno] = food
 
-    return jsonify(**dict(list=foodArray))
+    return jsonify(**dict(list=foodList))
 

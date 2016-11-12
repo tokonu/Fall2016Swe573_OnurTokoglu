@@ -24,6 +24,19 @@ def getNutrients():
         nutrient['group'] = nutrientJson['group']
         nutrientList.append(nutrient)
 
-    measures = nutrientJsons[0]['measures']
+    measureGram = {
+        'label' : 'g',
+        'eqv' : 1,
+        'qty' : 100
+    }
+    measures = [measureGram]
 
-    return jsonify(ndbno=ndbno,measures=measures,nutrients=nutrientList)
+    for measure in nutrientJsons[0]['measures']:
+        if measure['label'] == 'g':
+            continue
+        del measure['value']
+        measures.append(measure);
+
+    #measures = nutrientJsons[0]['measures']
+
+    return jsonify(ndbno=ndbno, measures=measures, nutrients=nutrientList)

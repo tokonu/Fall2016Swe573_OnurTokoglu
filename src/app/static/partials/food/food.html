@@ -3,12 +3,12 @@
 <a ui-sref=".myfoods" class="btn btn-primary">myfoods</a>
 <a ui-sref=".mymeals" class="btn btn-primary">my meals</a>
 
-<div class="row">
-    <div class="col-md-8">
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-7">
         <div ui-view></div>
     </div>
 
     <div class="col-md-4">
-        <div ui-view="mealbox"></div>
+        <div id="mealbox" ui-view="mealbox" ng-controller="MealboxCntr"></div>
     </div>
 </div>
