@@ -31,6 +31,7 @@ def saveFoodConsumption():
             continue
         foodObj = getFoodObjectFromDict(foodDict)
         if not foodObj:
+            print("saveFoodConsumption no foodobj")
             continue
         saveFoodToDb(foodObj, foodDict)
         selectedMeasure = foodDict['selectedMeasure']
@@ -91,12 +92,14 @@ def saveFoodToDb(foodObj, foodDict):
         db.session.commit()
     except:
         db.session.rollback()
+        print("saveFoodToDb food exists")
         return
     saveNutrientsToDb(foodDict)
 
 
 
 def saveNutrientsToDb(foodDict):
+    print("saving nutrients")
     food_ndbno = foodDict['ndbno']
     for nutrientDict in foodDict['nutrients']:
         nutObj = getNutrientObjectFromDict(nutrientDict)
@@ -105,7 +108,6 @@ def saveNutrientsToDb(foodDict):
             db.session.commit()
         except:
             db.session.rollback()
-            continue
 
         value = float(nutrientDict['value'])
 

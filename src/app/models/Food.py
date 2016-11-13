@@ -18,3 +18,7 @@ class Food(db.Model):
 
     def getMeasures(self):
         return loads(self.measuresString)
+
+
+    def __repr__(self):
+        return 'food' + self.food_ndbno + ' - ' + self.name

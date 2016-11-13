@@ -65,39 +65,39 @@ app.controller('FoodSearchCtrl',function ($scope, MealBoxService, $http) {
     };
 
     var getNutrients = function(food, callback){
-        // setLoading();
-        //
-        // $http.post('/userarea/getNutrients', {ndbno:food.ndbno})
-        //     .success(function (data) {
-        //         stopLoading();
-        //         if (data.error){
-        //             alert(data.error);
-        //         }else if (data) {
-        //             data.selectedMeasure = data.measures[0];
-        //             //data.selectedMeasure.input = 100;
-        //             food.nutrients = data.nutrients;
-        //             food.measures = data.measures;
-        //             food.selectedMeasure = data.measures[0];
-        //             callback(true);
-        //         }
-        //         //alert(JSON.stringify(data, null, 4));
-        //     })
-        //     .error(function (err) {
-        //         alert(err);
-        //         stopLoading();
-        //     });
+        setLoading();
 
-        dummydata.selectedMeasure = dummydata.measures[0];
-        food.nutrients = JSON.parse(JSON.stringify(dummydata.nutrients)); //dummydata;
-        food.measures = JSON.parse(JSON.stringify(dummydata.measures));
-        food.selectedMeasure = JSON.parse(JSON.stringify(dummydata.measures[0]));
-        callback(true);
+        $http.post('/userarea/getNutrients', {ndbno:food.ndbno})
+            .success(function (data) {
+                stopLoading();
+                if (data.error){
+                    alert(data.error);
+                }else if (data) {
+                    data.selectedMeasure = data.measures[0];
+                    //data.selectedMeasure.input = 100;
+                    food.measures = data.measures;
+                    food.selectedMeasure = data.measures[0];
+                    food.nutrients = data.nutrients;
+                    callback(true);
+                }
+                //alert(JSON.stringify(data, null, 4));
+            })
+            .error(function (err) {
+                alert(err);
+                stopLoading();
+            });
+
+        // dummydata.selectedMeasure = dummydata.measures[0];
+        // food.nutrients = JSON.parse(JSON.stringify(dummydata.nutrients)); //dummydata;
+        // food.measures = JSON.parse(JSON.stringify(dummydata.measures));
+        // food.selectedMeasure = JSON.parse(JSON.stringify(dummydata.measures[0]));
+        // callback(true);
     };
 
     $scope.getMultiplier = function(food){
         var selected = food.selectedMeasure;
         return selected.qty * selected.eqv/100;
-    }
+    };
 
     $scope.addToMealbox = function(food){
         MealBoxService.addFood(food);

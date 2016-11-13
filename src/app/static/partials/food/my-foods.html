@@ -1,1 +1,61 @@
-<p>my foods</p>
+<div id="myFoods">
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" ng-change="searchChanged(searchText)">
+        </div>
+    </div>
+
+    <br>
+
+    <div ng-repeat="(ndbno,food) in filteredList">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group food-row">
+                    <label>{{ food.name }}</label>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="foodClicked(food)">v</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row nutrient-detail" ng-class="{'nutrient-detail-hide': !food.nutrientsVisible, 'nutrient-detail-show': food.nutrientsVisible}">
+
+            <div class="col-md-8 nutrient-detail-table">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Group</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="nutrient in food.nutrients">
+                                <td>{{ nutrient.group }}</td>
+                                <td>{{ nutrient.name }}</td>
+                                <td>{{ nutrient.value * getMultiplier(food) | number:2 }} {{ nutrient.unit }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 nutrient-detail-right">
+                <div class="col-md-4" style="padding: 10px">
+                    <input type="number" class="form-control" name="measureInput" ng-model="food.selectedMeasure.qty" >
+                </div>
+                <div class="col-md-4" style="padding: 15px 10px;">
+                    <select ng-model="food.selectedMeasure" ng-options="measure.label for measure in food.measures">
+                    </select>
+                </div>
+                <div class="col-md-4" style="padding: 10px 0;">
+                    <button type="button" class="btn btn-success" ng-click="addToMealbox(food)">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

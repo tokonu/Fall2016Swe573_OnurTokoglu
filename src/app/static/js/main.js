@@ -26,7 +26,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('eat.myfoods',{
             url: '/myfoods',
-            templateUrl: '../static/partials/food/my-foods.html'
+            templateUrl: '../static/partials/food/my-foods.html',
+            controller: 'MyFoodsCntr'
         })
         .state('eat.mymeals',{
             url: '/mymeals',

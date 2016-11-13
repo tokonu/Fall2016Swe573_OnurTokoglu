@@ -14,3 +14,7 @@ class Nutrient(db.Model):
         self.name = name
         self.unit = unit
         self.group = group
+
+
+    def __repr__(self):
+        return 'nutrient ' + self.name + ' - ' + str(self.nut_id)

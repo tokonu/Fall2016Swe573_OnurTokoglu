@@ -149,6 +149,58 @@
 }
 
 
+
+
+
+/* My Foods */
+
+
+#myFoods .nutrient-detail-show {
+    height: 300px;
+    visibility: visible;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+#myFoods .nutrient-detail-hide {
+    height: 0px;
+    visibility: hidden;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+#myFoods .nutrient-detail {
+    overflow: hidden;
+    position: relative;
+}
+
+#myFoods .nutrient-detail-table {
+    height:100%;
+    overflow: scroll;
+}
+#myFoods .nutrient-detail-right {
+
+}
+
+#myFoods .food-row {
+    margin: 5px 0;
+    padding-left: 20px;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+}
+
+#myFoods .food-row label {
+    padding-top: 7px;
+}
+
+
+
+
+
 /* Mealbox */
 
 #mealbox {
