@@ -1,5 +1,5 @@
 from app import flask_app as app
-from flask_login import login_required, current_user
+from flask_login import login_required
 from flask import request
 from flask import jsonify
 from .FCD import FCD

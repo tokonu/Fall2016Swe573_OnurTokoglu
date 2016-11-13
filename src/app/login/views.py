@@ -2,7 +2,7 @@ from app import db, login_manager
 from app import flask_app as app
 from flask import render_template, request, flash, url_for, redirect, abort, g, session
 from flask_login import login_user, logout_user, current_user, login_required
-from app.models.User import User
+from models.User import User
 from passlib.hash import sha256_crypt as hash
 from .RegisterForm import RegisterForm
 from sqlalchemy import exc

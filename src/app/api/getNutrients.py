@@ -35,6 +35,8 @@ def getNutrients():
         if measure['label'] == 'g':
             continue
         del measure['value']
+        if int(measure['qty']) != 1:
+            measure['eqv'] = float(measure['eqv'])/float(measure['qty'])
         measures.append(measure);
 
     #measures = nutrientJsons[0]['measures']

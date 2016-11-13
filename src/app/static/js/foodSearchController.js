@@ -65,8 +65,8 @@ app.controller('FoodSearchCtrl',function ($scope, MealBoxService, $http) {
     };
 
     var getNutrients = function(food, callback){
-        //setLoading();
-
+        // setLoading();
+        //
         // $http.post('/userarea/getNutrients', {ndbno:food.ndbno})
         //     .success(function (data) {
         //         stopLoading();
@@ -89,7 +89,6 @@ app.controller('FoodSearchCtrl',function ($scope, MealBoxService, $http) {
 
         dummydata.selectedMeasure = dummydata.measures[0];
         food.nutrients = JSON.parse(JSON.stringify(dummydata.nutrients)); //dummydata;
-        food.nutrients[0].unit = food.ndbno;
         food.measures = JSON.parse(JSON.stringify(dummydata.measures));
         food.selectedMeasure = JSON.parse(JSON.stringify(dummydata.measures[0]));
         callback(true);

@@ -15,9 +15,14 @@ app.service('MealBoxService',function () {
         delete foods[food.ndbno];
     };
 
+    var clearFoods = function(){
+        foods = {};
+    }
+
     return {
         addFood: addFood,
         getFoods: getFoods,
-        deleteFood: deleteFood
+        deleteFood: deleteFood,
+        clearFoods: clearFoods
     };
 });

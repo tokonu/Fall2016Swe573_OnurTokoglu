@@ -1,8 +1,9 @@
 from app import db
-from .User import User
+from models.User import User
 
 class WeightHist(db.Model):
     __tablename__ = "weight_history"
+    __table_args__ = {'extend_existing': True}
     user_id = db.Column('user_id',db.Integer, db.ForeignKey(User.user_id), primary_key=True)
     datetime = db.Column('date', db.DateTime(), primary_key=True)
     weight = db.Column('weight', db.Float)
