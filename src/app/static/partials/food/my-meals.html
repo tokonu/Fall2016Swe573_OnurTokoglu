@@ -1,1 +1,54 @@
-<p>my meals</p>
+<div id="myMeals">
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" ng-change="searchChanged(searchText)">
+        </div>
+    </div>
+
+    <br>
+
+    <div ng-repeat="(recipeId,recipe) in filteredList">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group recipe-row">
+                    <label>{{ recipe.name }}</label>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="recipeClicked(recipe)">v</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row food-detail" ng-class="{'food-detail-hide': !recipe.foodsVisible, 'food-detail-show': recipe.foodsVisible}">
+
+            <div class="col-md-8 food-detail-table">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Amount(grams)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(ndbno, food) in recipe.foods">
+                                <td>{{ food.name }}</td>
+                                <td>{{ food.measure_value }} {{ food.measure_text }}</td>
+                                <td>{{ food.value_g }} g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 food-detail-right">
+                <div class="col-md-4" style="padding: 10px 0;">
+                    <button type="button" class="btn btn-success" ng-click="addToMealbox(recipe)">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

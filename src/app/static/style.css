@@ -200,6 +200,53 @@
 
 
 
+/* My Meals */
+
+
+
+#myMeals .food-detail-show {
+    max-height: 300px;
+    visibility: visible;
+
+    -webkit-transition: max-height 0.8s;
+	-moz-transition: max-height 0.8s;
+	transition: max-height 0.8s;
+}
+
+#myMeals .food-detail-hide {
+    max-height: 0px;
+    visibility: hidden;
+
+    -webkit-transition: max-height 0.8s;
+	-moz-transition: max-height 0.8s;
+	transition: max-height 0.8s;
+}
+
+#myMeals .food-detail {
+    overflow: hidden;
+    position: relative;
+}
+
+#myMeals .food-detail-table {
+    height:100%;
+    overflow: scroll;
+}
+#myMeals .food-detail-right {
+
+}
+
+#myMeals .recipe-row {
+    margin: 5px 0;
+    padding-left: 20px;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+}
+
+#myMeals .recipe-row label {
+    padding-top: 7px;
+}
+
+
 
 /* Mealbox */
 

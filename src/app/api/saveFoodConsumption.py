@@ -1,13 +1,15 @@
 from app import flask_app as app
 from app import db
-from flask_login import login_required, current_user
 from flask import request
 from flask import jsonify
+from flask_login import login_required, current_user
 from models.Food import Food
 from models.Nutrient import Nutrient
 from models.FoodHasNutrient import FoodHasNutrient
 from models.UserAteFood import UserAteFood
+from models.RecipeHasFood import RecipeHasFood
 from datetime import datetime
+from models.Recipe import Recipe
 
 @app.route('/userarea/saveFoodConsumption', methods=['POST'])
 @login_required
@@ -23,6 +25,17 @@ def saveFoodConsumption():
 
     foods = mealbox['foods']
     userId = current_user.user_id
+
+    if 'name' in mealbox:
+        recipeName = mealbox['name']
+        recipe = Recipe(user_id=userId,name=recipeName)
+
+        try:
+            db.session.add(recipe)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            return jsonify(error="Try again later")
 
     for ndbno, foodDict in foods.items():
         if 'nutrients' not in foodDict or 'measures' not in foodDict or 'ndbno' not in foodDict \
@@ -48,6 +61,15 @@ def saveFoodConsumption():
             db.session.add(uaf)
             db.session.commit()
         except:
+            db.session.rollback()
+
+        try:
+            rhf = RecipeHasFood(recipe_id=recipe.recipe_id, food_ndbno=foodObj.food_ndbno,
+                                value_g=measureValue*measureEqv, measure_value=measureValue, measure_text=measureText)
+            db.session.add(rhf)
+            db.session.commit()
+        except Exception as e:
+            print(e)
             db.session.rollback()
 
     return "ok"

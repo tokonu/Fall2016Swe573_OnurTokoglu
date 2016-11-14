@@ -1,6 +1,6 @@
 from app import db
-from .Food import Food
-from .Nutrient import Nutrient
+from models.Food import Food
+from models.Nutrient import Nutrient
 
 class FoodHasNutrient(db.Model):
     __tablename__ = "food_has_nutrient"

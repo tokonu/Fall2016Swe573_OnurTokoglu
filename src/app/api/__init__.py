@@ -1,1 +1,1 @@
-from . import editUser, FCD, searchFood, getNutrients, saveFoodConsumption, getMyFoods, getNutrientsFromLocal
+from . import editUser, FCD, searchFood, getNutrients, saveFoodConsumption, getMyFoods, getNutrientsFromLocal, getMyRecipes
