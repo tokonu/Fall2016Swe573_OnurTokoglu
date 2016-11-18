@@ -1,10 +1,10 @@
 'use strict';
 
 app.controller('TopbarCtrl',function ($scope, UserInfoService, $http) {
-    $scope.user = UserInfoService.getUser()
+    $scope.user = UserInfoService.getUser();
     $scope.user.bmi = function () {
         return ($scope.user.weight / Math.pow($scope.user.height/100,2)).toFixed(1);
-    }
+    };
 
     //Form Functions
 

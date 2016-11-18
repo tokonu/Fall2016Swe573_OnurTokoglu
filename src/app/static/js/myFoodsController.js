@@ -73,7 +73,7 @@ app.controller('MyFoodsCntr',function ($scope, MealBoxService, $http) {
                 $scope.filteredList[ndbno] = food;
             }
         }
-    }
+    };
 
 
     getMyFoods();

@@ -1,1 +1,1 @@
-from . import User, WeightHist, Food, Nutrient, FoodHasNutrient, UserAteFood, Recipe, RecipeHasFood
+from . import User, WeightHist, Food, Nutrient, FoodHasNutrient, UserAteFood, Recipe, RecipeHasFood, Activity

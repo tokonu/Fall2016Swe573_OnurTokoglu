@@ -300,7 +300,47 @@
 
 
 
+/* Activities */
 
+#activities {
+	width: 50%;
+	margin: auto;
+}
+
+#activities .activity-detail-show {
+    height: 50px;
+    visibility: visible;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+#activities .activity-detail-hide {
+    height: 0px;
+    visibility: hidden;
+
+    -webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+
+#activities .activity-detail {
+    overflow: hidden;
+    position: relative;
+}
+
+
+#activities .activity-row {
+    margin: 5px 0;
+    padding-left: 20px;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+}
+
+#activities .activity-row label {
+    padding-top: 7px;
+}
 
 
 

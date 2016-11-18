@@ -36,5 +36,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 
+        .state('activity',{
+            url: '/activity',
+            views: {
+                '' : {
+                    templateUrl : '../static/partials/activity/activity.html',
+                    controller: 'ActivityCtrl'
+                }
+            }
+        })
+
     ;
 });

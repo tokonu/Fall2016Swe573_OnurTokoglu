@@ -1,0 +1,50 @@
+<div id="activities">
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" ng-change="searchChanged(searchText)">
+        </div>
+    </div>
+
+    <br>
+
+    <div ng-repeat="(id,activity) in filteredActivities">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group activity-row">
+                    <label>{{ activity.name }}</label>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="activityClicked(activity)">v</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row activity-detail" ng-class="{'activity-detail-hide': !activity.detailVisible, 'activity-detail-show': activity.detailVisible}">
+
+            <div class="col-md-1">
+
+            </div>
+
+            <div class="col-md-4 activity-detail-right" style="margin-top: 15px">
+                <b>Energy Expended: </b> {{ getCalories(activity) }} kcal
+            </div>
+
+
+            <div class="col-md-7 activity-detail-right">
+                <div class="col-md-2" style="margin-top: 15px">
+                    <b>Duration: </b>
+                </div>
+                <div class="col-md-4" style="padding: 10px">
+                    <input type="number" class="form-control" name="measureInput" ng-model="activity.duration" >
+                </div>
+                <div class="col-md-2" style="margin-top: 15px">
+                    minutes
+                </div>
+                <div class="col-md-4" style="padding: 10px 0;">
+                    <button type="button" class="btn btn-success" ng-click="">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
