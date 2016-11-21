@@ -1,8 +1,15 @@
 <div id="activities">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" ng-change="searchChanged(searchText)">
+        </div>
+        <div class="col-md-4">
+            <datepicker date-format="dd-MM-yyyy" selector="form-control">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="date" />
+                </div>
+            </datepicker>
         </div>
     </div>
 
@@ -42,7 +49,7 @@
                     minutes
                 </div>
                 <div class="col-md-4" style="padding: 10px 0;">
-                    <button type="button" class="btn btn-success" ng-click="">Add</button>
+                    <button type="button" class="btn btn-success" ng-click="saveActivity(activity)">Add</button>
                 </div>
             </div>
         </div>

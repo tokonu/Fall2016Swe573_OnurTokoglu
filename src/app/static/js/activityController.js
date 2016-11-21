@@ -33,7 +33,9 @@ app.controller('ActivityCtrl',function ($scope, UserInfoService, $http) {
     };
 
     $scope.getCalories = function(activity){
-        return Math.round(activity.kcal_ph_pkg * user.weight * activity.duration / 60);
+        var kcal = Math.round(activity.kcal_ph_pkg * user.weight * activity.duration / 60);
+        activity["kcal"] = kcal;
+        return kcal
     };
 
     $scope.searchChanged = function (text) {
@@ -50,6 +52,23 @@ app.controller('ActivityCtrl',function ($scope, UserInfoService, $http) {
         }
     };
 
+    $scope.saveActivity = function (activity) {
+        activity.date = $scope.date;
+        $http.post('/userarea/saveActivity', {activity:activity})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                }else {
+                    alert(data);
+                }
+                //alert(JSON.stringify(data, null, 4));
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    }
+
+
     getActivities();
 
-});
+}); 
