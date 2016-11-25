@@ -1,10 +1,11 @@
 'use strict';
 
-var app = angular.module('foodApp',['ui.router','720kb.datepicker']);
+var app = angular.module('foodApp',['ui.router','720kb.datepicker','chart.js']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/eat')
-    .when("/eat", "/eat/myfoods");
+    .when("/eat", "/eat/myfoods")
+    .when("/reports", "/reports/weight");
 
     $stateProvider
 
@@ -46,5 +47,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('reports',{
+            url: '/reports',
+            templateUrl: '../static/partials/report/reports.html',
+            controller: 'ReportsCtrl'
+        })
+        .state('reports.weight',{
+            url: '/weight',
+            templateUrl: '../static/partials/report/reports-weight.html',
+            controller: 'ReportsWeightCtrl'
+        })
     ;
+
+
 });

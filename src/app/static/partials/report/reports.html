@@ -1,0 +1,25 @@
+<p>report</p>
+<a ui-sref=".myfoods" class="btn btn-primary">My Foods</a>
+<a ui-sref=".balance" class="btn btn-primary">Balance</a>
+<a ui-sref=".nutrition" class="btn btn-primary">Nutrition</a>
+<a ui-sref=".weight" class="btn btn-primary">Weight</a>
+
+
+<datepicker date-format="dd-MM-yyyy" selector="form-control">
+    <div class="input-group">
+        <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="fromDate" ng-change="fromDateChanged()" />
+    </div>
+</datepicker>
+
+<datepicker date-format="dd-MM-yyyy" selector="form-control">
+    <div class="input-group">
+        <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="toDate" ng-change="toDateChanged()" />
+    </div>
+</datepicker>
+
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-7">
+        <div ui-view></div>
+    </div>
+</div>

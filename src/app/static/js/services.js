@@ -26,3 +26,53 @@ app.service('MealBoxService',function () {
         clearFoods: clearFoods
     };
 });
+
+
+app.service('ReportsDateService',function () {
+
+    var fromDate = "01-01-2016";
+    var toDate = "12-12-2016";
+    var callback;
+
+    var setFromDate = function(date){
+        fromDate = date;
+    };
+
+    var getFromDate = function () {
+        return fromDate;
+    };
+
+    var setToDate = function (date) {
+        toDate = date;
+    };
+
+    var getToDate = function () {
+        return toDate;
+    };
+
+    var registerCallback = function (c) {
+        callback = c;
+    };
+
+    var triggerCallback = function () {
+        callback();
+    }
+
+    return {
+        setFromDate: setFromDate,
+        getFromDate: getFromDate,
+        setToDate: setToDate,
+        getToDate: getToDate,
+        registerCallback: registerCallback,
+        triggerCallback: triggerCallback
+    }
+
+});
+
+
+
+
+
+
+
+
