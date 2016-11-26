@@ -1,25 +1,88 @@
 <p>report</p>
-<a ui-sref=".myfoods" class="btn btn-primary">My Foods</a>
-<a ui-sref=".balance" class="btn btn-primary">Balance</a>
-<a ui-sref=".nutrition" class="btn btn-primary">Nutrition</a>
-<a ui-sref=".weight" class="btn btn-primary">Weight</a>
 
 
-<datepicker date-format="dd-MM-yyyy" selector="form-control">
-    <div class="input-group">
-        <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="fromDate" ng-change="fromDateChanged()" />
+
+<div id="reports" class="row">
+    <div class="col-md-3 button-col">
+        <div class="row">
+            <div class="col-md-12">
+                <a ui-sref=".myfoods" class="btn btn-primary">My Foods</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a ui-sref=".balance" class="btn btn-primary">Balance</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a ui-sref=".nutrition" class="btn btn-primary">Nutrition</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a ui-sref=".weight" class="btn btn-primary">Weight</a>
+            </div>
+        </div>
     </div>
-</datepicker>
 
-<datepicker date-format="dd-MM-yyyy" selector="form-control">
-    <div class="input-group">
-        <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="toDate" ng-change="toDateChanged()" />
+    <div class="col-md-8">
+        <div class="row date-row">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-2" style="margin-top: 15px">
+                        <span>from</span>
+                    </div>
+                    <div class="col-md-10">
+                        <datepicker date-format="dd-MM-yyyy" selector="form-control">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="fromDate" ng-change="fromDateChanged()" />
+                            </div>
+                        </datepicker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-2" style="margin-top: 15px">
+                        <span>to</span>
+                    </div>
+                    <div class="col-md-10">
+                        <datepicker date-format="dd-MM-yyyy" selector="form-control">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="date" placeholder="Choose a date" ng-model="toDate" ng-change="toDateChanged()" />
+                            </div>
+                        </datepicker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success" ng-click="updateDate()">GO</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9" style="margin-top: 30px">
+                <div ui-view></div>
+            </div>
+        </div>
     </div>
-</datepicker>
 
 
-<div class="row" style="margin-top: 10px">
-    <div class="col-md-7">
-        <div ui-view></div>
-    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

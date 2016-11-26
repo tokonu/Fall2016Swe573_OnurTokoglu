@@ -14,6 +14,9 @@ app.controller('ReportsCtrl',function ($scope, ReportsDateService) {
             $scope.toDate = $scope.fromDate;
         }
         ReportsDateService.setToDate($scope.toDate);
+    };
+
+    $scope.updateDate = function () {
         ReportsDateService.triggerCallback();
     };
 
@@ -51,7 +54,7 @@ app.controller('ReportsWeightCtrl',function ($scope, ReportsDateService, $http) 
     };
 
     ReportsDateService.registerCallback(function () {
-
+        getWeightHist()
     });
 
     getWeightHist();
