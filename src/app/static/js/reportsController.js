@@ -32,6 +32,44 @@ app.controller('ReportsWeightCtrl',function ($scope, ReportsDateService, $http) 
     $scope.labels = ["a","b","c"];
     $scope.colors = ['#44ee66','#323232'];
     $scope.series = ['Weight', 'BMI'];
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    $scope.options = {
+        scales: {
+            yAxes: [
+                {
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Weight (kg)"
+                    },
+                    ticks: {
+                        min:50,
+                        max:150
+                    }
+                },
+                {
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    scaleLabel: {
+                        display: true,
+                        labelString: "BMI (kg/m^2)"
+                    },
+                    ticks: {
+                        min:10,
+                        max:50
+                    }
+                }
+            ]
+        },
+        legend: {
+            display: true
+        }
+    };
 
     var getWeightHist = function() {
         var fromDate = ReportsDateService.getFromDate();
@@ -57,7 +95,7 @@ app.controller('ReportsWeightCtrl',function ($scope, ReportsDateService, $http) 
         getWeightHist()
     });
 
-    getWeightHist();
+    //getWeightHist();
 
     var processData = function(histList){
         $scope.data = [[],[]];
