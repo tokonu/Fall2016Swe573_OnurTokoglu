@@ -16,8 +16,12 @@ def getWeightHistory():
     if not jsonReq:
         return jsonify(error="Request error")
 
+    if 'from' not in jsonReq or 'to' not in jsonReq:
+        return jsonify(error="Missing values")
+
     fromStr = jsonReq['from']
     toStr = jsonReq['to']
+
 
     try:
         fromDate = datetime.strptime(fromStr, '%d-%m-%Y')

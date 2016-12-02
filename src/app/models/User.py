@@ -1,5 +1,6 @@
 from app import db
 from app.login.RegisterForm import RegisterForm
+from datetime import date
 
 class User(db.Model):
     __tablename__ = "users"
@@ -24,6 +25,22 @@ class User(db.Model):
         self.gender = form.gender
         self.notes = form.notes
 
+
+    def getRecommendedDailyIntake(self):
+        recommended = 0
+        if self.gender == 'M':
+            recommended = 1.2 * (5 + self.weight*10 + self.height*6.25 - self.getAge()*5)
+        else:
+            recommended = 1.2 * (-161 + self.weight*10 + self.height*6.25 + self.getAge()*5)
+        return round(recommended)
+
+    def getAge(self):
+        born = self.birthday
+        today = date.today()
+        years_difference = today.year - born.year
+        is_before_birthday = (today.month, today.day) < (born.month, born.day)
+        elapsed_years = years_difference - int(is_before_birthday)
+        return elapsed_years
 
     def is_authenticated(self):
         return True
