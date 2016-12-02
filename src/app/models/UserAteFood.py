@@ -23,3 +23,6 @@ class UserAteFood(db.Model):
         self.value_g = value_g
         self.measure_value = measure_value
         self.measure_text = measure_text
+
+    def __repr__(self):
+        return "User ate food " + self.food_ndbno

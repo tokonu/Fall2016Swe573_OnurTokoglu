@@ -65,6 +65,7 @@ app.controller('MyFoodsCntr',function ($scope, MealBoxService, $http) {
     $scope.searchChanged = function (text) {
         if (!text || text == ''){
             $scope.filteredList = $scope.foodList;
+            return;
         }
         $scope.filteredList = {};
         for (var ndbno in $scope.foodList){

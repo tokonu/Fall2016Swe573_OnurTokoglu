@@ -177,7 +177,7 @@ app.controller('ReportsBalanceCtrl',function ($scope, ReportsDateService, $http)
     ];
     $scope.datasetOverride = [
       {
-          label: "Expended",
+          label: "Expended*",
           borderWidth: 1,
           type: 'bar'
       }, {
@@ -248,7 +248,109 @@ app.controller('ReportsBalanceCtrl',function ($scope, ReportsDateService, $http)
 
 
 
+app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, $http) {
 
+    $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
+    $scope.labels = [];
+    $scope.data = [[],[]];
+    $scope.datasetOverride = [
+      {
+        label: "Daily Intake",
+        borderWidth: 1,
+        type: 'bar'
+      },
+      {
+        label: "Daily Recommended Intake",
+        borderWidth: 3,
+        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
+        type: 'line'
+      }
+    ];
+
+    $scope.options = {
+        legend: {
+            display: true
+        },
+        scales: {
+            yAxes: [
+                {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    scaleLabel: {
+                        display: true,
+                        labelString: ""
+                    }
+                }
+            ]
+        },
+        title: {
+            display: true,
+            text: ''
+        }
+    };
+
+    $scope.nutrients = {};
+    $scope.filteredNutrients = {};
+
+    var getNutrientHist = function() {
+        var fromDate = ReportsDateService.getFromDate();
+        var toDate = ReportsDateService.getToDate();
+
+        $http.post('/userarea/getNutrientHistory', {from:fromDate, to:toDate})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                    return;
+                }
+                if (data.nutrients){
+                    //alert(JSON.stringify(data.balanceHist, null, 2));
+                    //processData(data.balanceHist);
+                    $scope.nutrients = data.nutrients;
+                    $scope.filteredNutrients = $scope.nutrients;
+                    $scope.selectionChanged(data.nutrients["203"]);
+                }
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    };
+
+    ReportsDateService.registerCallback(function () {
+        getNutrientHist();
+    });
+
+    getNutrientHist();
+
+    $scope.selectionChanged = function (nutrient) {
+        $scope.data = [[],[]];
+        $scope.labels = [];
+        $scope.options.scales.yAxes[0].scaleLabel.labelString = nutrient.name + " (" + nutrient.unit + ")";
+        $scope.options.title.text = nutrient.name + " Intake";
+        for (var i = 0; i < nutrient.history.length; i++){
+            $scope.data[0].push(Math.floor(nutrient.history[i].consumption));
+            $scope.data[1].push(0);
+            $scope.labels.push(nutrient.history[i].date);
+        }
+    };
+
+    $scope.searchChanged = function (text) {
+        if (!text || text == ''){
+            $scope.filteredNutrients = $scope.nutrients;
+            return;
+        }
+        $scope.filteredNutrients = {};
+        for (var nut_id in $scope.nutrients){
+            var nutrient = $scope.nutrients[nut_id];
+            if (nutrient.name.toLowerCase().indexOf(text.toLowerCase()) != -1){
+                $scope.filteredNutrients[nut_id] = nutrient;
+            }
+        }
+    };
+
+
+});
 
 
 

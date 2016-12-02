@@ -1,0 +1,37 @@
+
+
+<div class="nutrients row">
+
+    <div class="col-md-10">
+        <canvas id="base" class="chart-bar"
+          chart-data="data" chart-labels="labels" chart-colors="colors"
+          chart-dataset-override="datasetOverride" chart-options="options" style="height: 800px">
+        </canvas>
+    </div>
+    <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Search nutrient..." ng-model="searchText" ng-change="searchChanged(searchText)"
+               style="margin-top: 20px;margin-bottom: 20px">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Group</th>
+                    <th>Name</th>
+                    <th>Avg. Value</th>
+                    <th>DRV</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(nut_id, nutrient) in filteredNutrients">
+                    <td>{{ nutrient.group }}</td>
+                    <td><a ng-click="selectionChanged(nutrient)" style="cursor: pointer">{{ nutrient.name }}</a></td>
+                    <td>{{ nutrient.totalConsumption / nutrient.numberOfEntries | number:2 }} {{ nutrient.unit }}</td>
+                    <td>q12</td>
+                    <td>qw</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

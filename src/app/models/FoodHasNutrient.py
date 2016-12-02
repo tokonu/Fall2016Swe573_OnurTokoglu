@@ -13,3 +13,6 @@ class FoodHasNutrient(db.Model):
         self.food_ndbno = food_ndbno
         self.nut_id = nut_id
         self.value = value
+
+    def __repr__(self):
+        return "Food Has Nutrient food" + self.food_ndbno + " nutrient " + str(self.nut_id)
