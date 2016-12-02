@@ -26,7 +26,7 @@ def getWeightHistory():
         return jsonify(error="Enter birthday in DD-MM-YYYY format")
 
     results = db.session.query(WeightHist).filter(WeightHist.user_id == userId)\
-        .filter(WeightHist.datetime > fromDate).filter(WeightHist.datetime < toDate).all()
+        .filter(WeightHist.datetime >= fromDate).filter(WeightHist.datetime <= toDate).all()
 
     histList = []
 

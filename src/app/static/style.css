@@ -365,6 +365,27 @@
 
 
 
+#reports .myFoods .date-row {
+    margin-bottom: 40px;
+}
+
+#reports .myFoods .food-row .delete-button {
+    margin-top: 15px;
+}
+
+#reports .myFoods .food-row {
+    margin: 5px 0;
+    padding-left: 20px;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+}
+
+#reports .myFoods .food-row label {
+    padding-top: 7px;
+}
+
+
+
 
 
 

@@ -3,14 +3,20 @@
 app.controller('ReportsCtrl',function ($scope, ReportsDateService) {
 
     $scope.fromDateChanged = function () {
-        if ($scope.fromDate > $scope.toDate){
-            $scope.fromDate = $scope.toDate;
+        var pattern = /(\d{2})-(\d{2})-(\d{4})/;
+        var from = new Date($scope.fromDate.replace(pattern,'$3-$2-$1'));
+        var to = new Date($scope.toDate.replace(pattern,'$3-$2-$1'));
+        if (from > to){
+            $scope.toDate = $scope.fromDate;
         }
         ReportsDateService.setFromDate($scope.fromDate);
     };
 
     $scope.toDateChanged = function () {
-        if ($scope.fromDate > $scope.toDate){
+        var pattern = /(\d{2})-(\d{2})-(\d{4})/;
+        var from = new Date($scope.fromDate.replace(pattern,'$3-$2-$1'));
+        var to = new Date($scope.toDate.replace(pattern,'$3-$2-$1'));
+        if (from > to){
             $scope.toDate = $scope.fromDate;
         }
         ReportsDateService.setToDate($scope.toDate);
@@ -111,7 +117,52 @@ app.controller('ReportsWeightCtrl',function ($scope, ReportsDateService, $http) 
 });
 
 
+app.controller('ReportsMyFoodsCtrl',function ($scope, ReportsDateService, $http) {
 
+    $scope.foodHist = [];
+
+    var getFoodHist = function() {
+        var fromDate = ReportsDateService.getFromDate();
+        var toDate = ReportsDateService.getToDate();
+
+        $http.post('/userarea/getMyFoodsForDates', {from:fromDate, to:toDate})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                    return;
+                }
+                if (data.foodHist){
+                    //alert(JSON.stringify(data.foodHist, null, 2));
+                    $scope.foodHist = data.foodHist;
+                }
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    };
+
+    ReportsDateService.registerCallback(function () {
+        getFoodHist()
+    });
+
+    getFoodHist();
+
+    $scope.deleteClicked = function (food) {
+        $http.post('/userarea/deleteFoodEntry', {entryId:food.entryId})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                    return;
+                }else{
+                    getFoodHist();
+                }
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    }
+
+});
 
 
 
