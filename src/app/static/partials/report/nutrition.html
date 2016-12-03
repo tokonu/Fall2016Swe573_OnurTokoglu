@@ -26,8 +26,8 @@
                     <td>{{ nutrient.group }}</td>
                     <td><a ng-click="selectionChanged(nutrient)" style="cursor: pointer">{{ nutrient.name }}</a></td>
                     <td>{{ nutrient.totalConsumption / nutrient.numberOfEntries | number:2 }} {{ nutrient.unit }}</td>
-                    <td>q12</td>
-                    <td>qw</td>
+                    <td>{{ getDRVText(nutrient) }}</td>
+                    <td>{{ getNutrientPercent(nutrient) | number:0}}</td>
                 </tr>
             </tbody>
         </table>

@@ -1,10 +1,10 @@
 'use strict';
 
-app.controller('MyFoodsCntr',function ($scope, MealBoxService, $http) {
+app.controller('MyFoodsCntr',function ($scope, MealBoxService, RecommendedValueService, $http) {
 
     $scope.foodList = {};
     $scope.filteredList = {};
-
+    $scope.recommended = RecommendedValueService.recommendedValues;
 
     $scope.foodClicked = function (food) {
         if (food.nutrientsVisible){

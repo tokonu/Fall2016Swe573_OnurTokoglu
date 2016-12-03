@@ -1,33 +1,42 @@
 <div id="topbar" class="row">
 
-    <div id="topbar-left" class="col-md-5">
+    <div id="topbar-left" class="col-md-12">
         <div class="row name-row">
             <span class="fa fa-user fa-4x user-icon"></span>
             <h1>{{ user.name }}</h1>
             <span class="fa fa-cog fa-3x gear-icon" data-toggle="modal" data-target="#editModal" ng-click="resetForm()"></span>
         </div>
 
-        <div class="row icon-row-1">
-            <div class="col-md-6">
+        <div class="row icon-row-1 icon-row-2">
+            <div class="col-md-3">
                 <span class="fa fa-balance-scale fa-2x weight-icon"></span>
                 <p class="weight">{{ user.weight }} kg</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <span class="fa fa-arrows-v fa-2x height-icon"></span>
                 <p class="height">{{ user.height }} cm</p>
             </div>
-        </div>
-
-        <div class="row icon-row-2">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <span class="fa fa-calculator fa-2x bmi-icon"></span>
                 <p class="bmi"><b>BMI:</b> {{ user.bmi() }}</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <span class="fa fa-birthday-cake fa-2x birthday-icon"></span>
                 <p class="birthday">{{ user.birthday }}</p>
             </div>
         </div>
+
+
+        <!--<div class="row icon-row-2">
+            <div class="col-md-3">
+                <span class="fa fa-calculator fa-2x bmi-icon"></span>
+                <p class="bmi"><b>BMI:</b> </p>
+            </div>
+            <div class="col-md-3">
+                <span class="fa fa-birthday-cake fa-2x birthday-icon"></span>
+                <p class="birthday"></p>
+            </div>
+        </div>-->
 
         <div class="row icon-row-3">
             <div class="col-md-12">
@@ -37,9 +46,9 @@
         </div>
     </div>
 
-    <div id="topbar-right" class="col-md-7">
+    <!--<div id="topbar-right" class="col-md-7">
         calories
-    </div>
+    </div>-->
 
 </div>
 

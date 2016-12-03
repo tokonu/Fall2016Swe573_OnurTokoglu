@@ -1,24 +1,9 @@
 'use strict';
 
-app.controller('FoodSearchCtrl',function ($scope, MealBoxService, $http) {
+app.controller('FoodSearchCtrl',function ($scope, MealBoxService, RecommendedValueService, $http) {
     $scope.searchQuery = "";
-    $scope.foodList = {
-        ndbno1 : {
-            name: "Food 1",
-            ndbno: "ndbno1"
-        },
-        ndbno2 : {
-            name: "Food 2",
-            ndbno: "ndbno2"
-        },
-        ndbno3 : {
-            name: "Food 3",
-            ndbno: "ndbno3"
-        }
-    };
-
-
-
+    $scope.foodList = {};
+    $scope.recommended = RecommendedValueService.recommendedValues;
 
     //$scope.nutrientReport = {};
     //$scope.nutrientSectionVisible = {};

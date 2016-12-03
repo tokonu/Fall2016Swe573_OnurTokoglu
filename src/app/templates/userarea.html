@@ -52,7 +52,8 @@ app.service('UserInfoService',function () {
         height : "{{ g.user.height }}",
         birthday : "{{ g.user.birthday|dateddmmyyyy }}",
         gender: "{{ g.user.gender }}",
-        notes: "{{ g.user.notes }}"
+        notes: "{{ g.user.notes }}",
+        recommendedIntake: "{{ g.user.getRecommendedDailyIntake() }}"
     };
     var getUser = function () {
         return user;

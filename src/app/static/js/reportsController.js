@@ -248,7 +248,7 @@ app.controller('ReportsBalanceCtrl',function ($scope, ReportsDateService, $http)
 
 
 
-app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, $http) {
+app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, RecommendedValueService, $http) {
 
     $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
     $scope.labels = [];
@@ -293,6 +293,7 @@ app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, $http
 
     $scope.nutrients = {};
     $scope.filteredNutrients = {};
+    $scope.recommended = RecommendedValueService.recommendedValues;
 
     var getNutrientHist = function() {
         var fromDate = ReportsDateService.getFromDate();
@@ -328,9 +329,13 @@ app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, $http
         $scope.labels = [];
         $scope.options.scales.yAxes[0].scaleLabel.labelString = nutrient.name + " (" + nutrient.unit + ")";
         $scope.options.title.text = nutrient.name + " Intake";
+        var recommended = $scope.recommended[nutrient.id];
+        if (!recommended){
+            recommended = 0;
+        }
         for (var i = 0; i < nutrient.history.length; i++){
             $scope.data[0].push(Math.floor(nutrient.history[i].consumption));
-            $scope.data[1].push(0);
+            $scope.data[1].push(recommended);
             $scope.labels.push(nutrient.history[i].date);
         }
     };
@@ -348,6 +353,22 @@ app.controller('ReportsNutrientCtrl',function ($scope, ReportsDateService, $http
             }
         }
     };
+
+    $scope.getDRVText = function (nutrient) {
+        if ($scope.recommended[nutrient.id]){
+            return $scope.recommended[nutrient.id] + " " + nutrient.unit;
+        }else{
+            return "n/a";
+        }
+    };
+
+    $scope.getNutrientPercent = function (nutrient) {
+        if ($scope.recommended[nutrient.id]){
+            return 100 * nutrient.totalConsumption / nutrient.numberOfEntries / $scope.recommended[nutrient.id];
+        }else{
+            return "n/a";
+        }
+    }
 
 
 });

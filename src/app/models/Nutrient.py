@@ -35,7 +35,8 @@ class Nutrient(db.Model):
                 "name": nutObj.name,
                 "nutrient_id": nutObj.nut_id,
                 "unit": nutObj.unit,
-                "value": fhnObj.value
+                "value": fhnObj.value,
+                "id": nutObj.nut_id
             }
             nutsList.append(nut)
 

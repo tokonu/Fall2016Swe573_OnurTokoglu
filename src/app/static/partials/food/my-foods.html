@@ -30,6 +30,8 @@
                                 <th>Group</th>
                                 <th>Name</th>
                                 <th>Value</th>
+                                <th>DRV</th>
+                                <th>%</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +39,8 @@
                                 <td>{{ nutrient.group }}</td>
                                 <td>{{ nutrient.name }}</td>
                                 <td>{{ nutrient.value * getMultiplier(food) | number:2 }} {{ nutrient.unit }}</td>
+                                <td>{{ recommended[nutrient.id] }}</td>
+                                <td>{{ 100 * nutrient.value * getMultiplier(food) / recommended[nutrient.id] | number:0 }}</td>
                             </tr>
                         </tbody>
                     </table>
