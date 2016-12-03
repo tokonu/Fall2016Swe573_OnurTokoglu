@@ -4,6 +4,7 @@ app.controller('ActivityCtrl',function ($scope, UserInfoService, $http) {
 
     $scope.activities = {};
     $scope.filteredActivities = {};
+    $scope.today = (new Date()).toString();
     var user = $scope.user = UserInfoService.getUser();
 
     var getActivities = function() {

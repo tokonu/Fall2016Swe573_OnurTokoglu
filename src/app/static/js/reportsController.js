@@ -26,8 +26,8 @@ app.controller('ReportsCtrl',function ($scope, ReportsDateService) {
         ReportsDateService.triggerCallback();
     };
 
-    $scope.fromDate = "03-11-2016";
-    $scope.toDate = "25-11-2016";
+    $scope.fromDate = ReportsDateService.getFromDate();
+    $scope.toDate = ReportsDateService.getToDate();
 
 });
 

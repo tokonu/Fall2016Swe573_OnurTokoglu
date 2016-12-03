@@ -4,6 +4,7 @@ app.controller('MealboxCntr',function ($scope, MealBoxService, $http) {
 
     $scope.foods = MealBoxService.getFoods();
     $scope.mealbox  = {};
+    $scope.today = (new Date()).toString();
 
     $scope.hasFood = function () {
         if (Object.keys($scope.foods).length > 0){

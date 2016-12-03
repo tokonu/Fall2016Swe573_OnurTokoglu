@@ -30,8 +30,21 @@ app.service('MealBoxService',function () {
 
 app.service('ReportsDateService',function () {
 
-    var fromDate = "01-01-2016";
-    var toDate = "12-12-2016";
+    var getFormattedDate = function (date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (day < 10){
+            day = "0" + day;
+        }
+        if (month < 10){
+            month = "0" + month;
+        }
+        return day + "-" + month + "-" + year;
+    };
+
+    var fromDate = getFormattedDate(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 7));
+    var toDate = getFormattedDate(new Date());
     var callback;
 
     var setFromDate = function(date){
