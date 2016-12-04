@@ -42,17 +42,29 @@ def saveFoodConsumption():
                 or 'selectedMeasure' not in foodDict:
             print('fooddict missing values')
             continue
+
+        selectedMeasure = foodDict['selectedMeasure']
+        if 'label' not in selectedMeasure or 'qty' not in selectedMeasure or 'eqv' not in selectedMeasure:
+            return jsonify(error="Enter valid input")
+
+        measureText = selectedMeasure['label']
+        try:
+            measureValue = float(selectedMeasure['qty'])
+            measureEqv = float(selectedMeasure['eqv'])  # equivalent to 100g
+        except:
+            print("return")
+            return jsonify(error="Enter valid input")
+
+        if measureValue <= 0 or measureEqv <= 0:
+            return jsonify(error="Enter valid input")
+
+
         foodObj = getFoodObjectFromDict(foodDict)
         if not foodObj:
             print("saveFoodConsumption no foodobj")
             continue
         saveFoodToDb(foodObj, foodDict)
-        selectedMeasure = foodDict['selectedMeasure']
-        if 'label' not in selectedMeasure or 'qty' not in selectedMeasure or 'eqv' not in selectedMeasure:
-            continue
-        measureText = selectedMeasure['label']
-        measureValue = float(selectedMeasure['qty'])
-        measureEqv = float(selectedMeasure['eqv']) # equivalent to 100g
+
         kcal = getEnergyOfFood(foodDict['nutrients'], measureEqv, measureValue)
 
         uaf = UserAteFood(foodObj.food_ndbno, userId, date, kcal, measureEqv*measureValue, measureValue, measureText)

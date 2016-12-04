@@ -18,8 +18,16 @@ def saveActivity():
     except:
         return jsonify(error="Enter birthday in DD-MM-YYYY format")
 
+    try:
+        duration = float(activity["duration"])
+        kcal = float(activity["kcal"])
+    except:
+        return jsonify(error="Enter valid input")
+    if duration <= 0 or duration > 300 or kcal <= 0:
+        return jsonify(error="Enter valid input")
+
     userId = current_user.user_id
-    userDidAct = UserDidActivity(activity["id"],userId,date,activity["kcal"],activity["duration"])
+    userDidAct = UserDidActivity(activity["id"], userId, date, kcal, duration)
 
     try:
         db.session.add(userDidAct)
