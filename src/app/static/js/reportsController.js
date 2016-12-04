@@ -164,6 +164,52 @@ app.controller('ReportsMyFoodsCtrl',function ($scope, ReportsDateService, $http)
 
 });
 
+app.controller('ReportsMyActivitiesCtrl',function ($scope, ReportsDateService, RecommendedValueService, $http) {
+    $scope.activityHist = [];
+
+
+    var getActivityHist = function() {
+        var fromDate = ReportsDateService.getFromDate();
+        var toDate = ReportsDateService.getToDate();
+
+        $http.post('/userarea/getMyActivities', {from:fromDate, to:toDate})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                    return;
+                }
+                if (data.activityHist){
+                    //alert(JSON.stringify(data.activityHist, null, 2));
+                    $scope.activityHist = data.activityHist;
+                }
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    };
+
+    ReportsDateService.registerCallback(function () {
+        getActivityHist()
+    });
+
+    getActivityHist();
+
+    $scope.deleteClicked = function (activity) {
+        $http.post('/userarea/deleteActivityEntry', {entryId:activity.entryId})
+            .success(function (data) {
+                if (data.error){
+                    alert(data.error);
+                    return;
+                }else{
+                    getActivityHist();
+                }
+            })
+            .error(function (err) {
+                alert(err);
+            });
+    }
+});
+
 
 app.controller('ReportsBalanceCtrl',function ($scope, ReportsDateService, $http) {
 

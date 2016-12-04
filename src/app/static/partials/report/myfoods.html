@@ -3,11 +3,11 @@
         <div class="col-md-12"><h4>{{ hist.date }}</h4><hr></div>
         <div class="col-md-12" ng-repeat="food in hist.foods">
             <div class="food-row row">
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <label>{{ food.name }}</label>
                     <p>{{ food.selectedMeasure.qty }} {{ food.selectedMeasure.label }}</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span>
                         <button class="btn btn-danger delete-button" type="button" ng-click="deleteClicked(food)">DELETE</button>
                     </span>

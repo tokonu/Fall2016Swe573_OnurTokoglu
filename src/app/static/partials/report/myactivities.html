@@ -1,0 +1,18 @@
+<div class="myActivities">
+    <div class="row date-row" ng-repeat="hist in activityHist">
+        <div class="col-md-12"><h4>{{ hist.date }}</h4><hr></div>
+        <div class="col-md-12" ng-repeat="activity in hist.activities">
+            <div class="activity-row row">
+                <div class="col-md-10">
+                    <label>{{ activity.name }}</label>
+                    <p>{{ activity.duration }} {{ minutes }}</p>
+                </div>
+                <div class="col-md-2">
+                    <span>
+                        <button class="btn btn-danger delete-button" type="button" ng-click="deleteClicked(activity)">DELETE</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

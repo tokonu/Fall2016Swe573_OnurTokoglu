@@ -72,6 +72,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '../static/partials/report/nutrition.html',
             controller: 'ReportsNutrientCtrl'
         })
+        .state('reports.myactivities',{
+            url: '/myactivities',
+            templateUrl: '../static/partials/report/myactivities.html',
+            controller: 'ReportsMyActivitiesCtrl'
+        })
     ;
 
 

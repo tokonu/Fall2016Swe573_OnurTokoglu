@@ -387,6 +387,29 @@
 
 
 
+#reports .myActivities .date-row {
+    margin-bottom: 40px;
+}
+
+#reports .myActivities .activity-row .delete-button {
+    margin-top: 15px;
+}
+
+#reports .myActivities .activity-row {
+    margin: 5px 0;
+    padding-left: 20px;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+}
+
+#reports .myActivities .activity-row label {
+    padding-top: 7px;
+}
+
+
+
+
+
 
 
 
