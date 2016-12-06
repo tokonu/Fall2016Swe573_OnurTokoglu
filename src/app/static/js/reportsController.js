@@ -34,8 +34,8 @@ app.controller('ReportsCtrl',function ($scope, ReportsDateService) {
 
 app.controller('ReportsWeightCtrl',function ($scope, ReportsDateService, $http) {
 
-    $scope.data = [[10,20,30],[25,35,45]];
-    $scope.labels = ["a","b","c"];
+    $scope.data = [[],[]];
+    $scope.labels = [];
     $scope.colors = ['#44ee66','#323232'];
     $scope.series = ['Weight', 'BMI'];
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
@@ -215,12 +215,8 @@ app.controller('ReportsBalanceCtrl',function ($scope, ReportsDateService, $http)
 
     $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
 
-    $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    $scope.data = [
-      [65, -59, 80, 81, -56, 55, -40],
-      [28, 48, -40, 19, 86, 27, 90],
-        [28, 48, -40, 19, 86, 27, 90]
-    ];
+    $scope.labels = [];
+    $scope.data = [[],[],[]];
     $scope.datasetOverride = [
       {
           label: "Expended*",
