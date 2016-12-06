@@ -3,7 +3,7 @@ from app import db
 from flask_login import login_required, current_user
 from flask import jsonify, request
 from app.models.WeightHist import WeightHist
-from datetime import datetime
+from datetime import datetime, timedelta
 
 @app.route('/userarea/getWeightHistory', methods=['POST'])
 @login_required
@@ -26,6 +26,8 @@ def getWeightHistory():
     try:
         fromDate = datetime.strptime(fromStr, '%d-%m-%Y')
         toDate = datetime.strptime(toStr, '%d-%m-%Y')
+        toDate += timedelta(days=1) # weight field has datetime so any results
+        # in toDate day is not returned, increment toDate by 1 day
     except:
         return jsonify(error="Enter birthday in DD-MM-YYYY format")
 
