@@ -23,4 +23,12 @@ import app.models
 db.create_all()
 db.session.commit()
 
+print("creating activity table")
 
+with open("activity.sql", "r") as act:
+    for line in act:
+        try:
+            db.session.execute(line)
+        except:
+            pass
+    db.session.commit()
