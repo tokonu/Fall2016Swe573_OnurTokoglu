@@ -1,9 +1,7 @@
 from app import flask_app as app
-from app import db
 from flask_login import login_required, current_user
 from flask import jsonify
-from models.Nutrient import Nutrient
-from models.FoodHasNutrient import FoodHasNutrient
+from app.models.Nutrient import Nutrient
 
 
 @app.route('/userarea/getNutrientsFromLocal/<ndbno>', methods=['POST', 'GET'])

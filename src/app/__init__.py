@@ -13,10 +13,14 @@ login_manager.init_app(flask_app)
 
 # Models must be imported after db variable init and before create_all call
 # db.create_all() function creates necessary tables if they don't exist
+
+
+import app.login
+import app.api
+
 import app.models
 
 db.create_all()
 db.session.commit()
 
-import app.login
-import app.api
+

@@ -2,8 +2,8 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required, current_user
 from flask import jsonify, request
-from models.UserAteFood import UserAteFood
-from models.Food import Food
+from app.models.UserAteFood import UserAteFood
+from app.models.Food import Food
 from datetime import datetime
 from sqlalchemy import desc
 

@@ -2,7 +2,7 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required
 from flask import jsonify
-from models.Activity import Activity
+from app.models.Activity import Activity
 
 
 @app.route('/userarea/getActivities', methods=['POST', 'GET'])

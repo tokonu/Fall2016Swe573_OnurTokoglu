@@ -5,7 +5,7 @@ from flask import request
 from app.login.RegisterForm import RegisterForm
 from passlib.hash import sha256_crypt as hash
 from app.models.WeightHist import WeightHist
-import datetime
+from datetime import datetime
 
 
 @app.route('/userarea/edituser', methods=['POST'])
@@ -26,13 +26,14 @@ def editUser():
         return error
 
     if(current_user.weight != form.weight or current_user.height != form.height):
-        weightHist = WeightHist(user_id=current_user.user_id, datetime=datetime.datetime.now() , weight=form.weight, height=form.height)
+        weightHist = WeightHist(user_id=current_user.user_id, datetime=datetime.now() , weight=form.weight, height=form.height)
         db.session.add(weightHist)
 
     current_user.email = form.email
     current_user.password = form.password
     current_user.name = form.name
-    current_user.birthday = form.birthday
+    #current_user.birthday = form.birthday
+    current_user.birthday = datetime.strptime(form.birthday, '%Y-%m-%d')
     current_user.weight = form.weight
     current_user.height = form.height
     current_user.gender = form.gender
@@ -40,7 +41,8 @@ def editUser():
 
     try:
         db.session.commit()
-    except:
+    except Exception as e:
+        print(e)
         db.session.rollback()
         return "Database error"
 

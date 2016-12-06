@@ -42,4 +42,4 @@ class Nutrient(db.Model):
 
         return nutsList
 
-from models.FoodHasNutrient import FoodHasNutrient  # has to be here
+from app.models.FoodHasNutrient import FoodHasNutrient  # has to be here

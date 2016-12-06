@@ -3,7 +3,7 @@ from app import db
 from flask import request
 from flask import jsonify
 from flask_login import login_required, current_user
-from models.UserDidActivity import UserDidActivity
+from app.models.UserDidActivity import UserDidActivity
 from datetime import datetime
 
 @app.route('/userarea/saveActivity', methods=['POST'])

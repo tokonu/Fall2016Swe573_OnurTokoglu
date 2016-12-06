@@ -2,7 +2,7 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required, current_user
 from flask import jsonify, request
-from models.WeightHist import WeightHist
+from app.models.WeightHist import WeightHist
 from datetime import datetime
 
 @app.route('/userarea/getWeightHistory', methods=['POST'])

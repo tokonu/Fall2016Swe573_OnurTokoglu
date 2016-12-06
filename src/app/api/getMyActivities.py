@@ -2,8 +2,8 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required, current_user
 from flask import jsonify, request
-from models.UserDidActivity import UserDidActivity
-from models.Activity import Activity
+from app.models.UserDidActivity import UserDidActivity
+from app.models.Activity import Activity
 from datetime import datetime
 from sqlalchemy import desc
 

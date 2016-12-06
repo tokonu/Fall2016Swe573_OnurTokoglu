@@ -3,13 +3,13 @@ from app import db
 from flask import request
 from flask import jsonify
 from flask_login import login_required, current_user
-from models.Food import Food
-from models.Nutrient import Nutrient
-from models.FoodHasNutrient import FoodHasNutrient
-from models.UserAteFood import UserAteFood
-from models.RecipeHasFood import RecipeHasFood
+from app.models.Food import Food
+from app.models.Nutrient import Nutrient
+from app.models.FoodHasNutrient import FoodHasNutrient
+from app.models.UserAteFood import UserAteFood
+from app.models.RecipeHasFood import RecipeHasFood
 from datetime import datetime
-from models.Recipe import Recipe
+from app.models.Recipe import Recipe
 
 @app.route('/userarea/saveFoodConsumption', methods=['POST'])
 @login_required

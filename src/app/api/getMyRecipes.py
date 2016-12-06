@@ -2,11 +2,10 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required, current_user
 from flask import jsonify
-from models.Recipe import Recipe
-from models.Food import Food
-from models.RecipeHasFood import RecipeHasFood
-from models.Nutrient import Nutrient
-import json
+from app.models.Recipe import Recipe
+from app.models.Food import Food
+from app.models.RecipeHasFood import RecipeHasFood
+from app.models.Nutrient import Nutrient
 
 @app.route('/userarea/getMyRecipes', methods=['POST'])
 @login_required

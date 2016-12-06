@@ -1,5 +1,5 @@
 from app import db
-from models.User import User
+from app.models.User import User
 
 class WeightHist(db.Model):
     __tablename__ = "weight_history"

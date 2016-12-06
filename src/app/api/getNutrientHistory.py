@@ -2,12 +2,11 @@ from app import flask_app as app
 from app import db
 from flask_login import login_required, current_user
 from flask import jsonify, request
-from models.UserAteFood import UserAteFood
-from models.FoodHasNutrient import FoodHasNutrient
-from models.Nutrient import Nutrient
-from models.User import User
+from app.models.UserAteFood import UserAteFood
+from app.models.FoodHasNutrient import FoodHasNutrient
+from app.models.Nutrient import Nutrient
+from app.models.User import User
 from datetime import datetime
-from sqlalchemy import desc
 
 
 @app.route('/userarea/getNutrientHistory', methods=['POST'])
