@@ -1,7 +1,8 @@
-<p>food</p>
-<a ui-sref=".search" class="btn btn-primary">search</a>
-<a ui-sref=".myfoods" class="btn btn-primary">myfoods</a>
-<a ui-sref=".mymeals" class="btn btn-primary">my meals</a>
+<div class="food-buttons" ng-controller="TopbarCtrl">
+    <a ui-sref=".search" class="btn btn-primary search" ng-class="getClass('/eat/search')">Search</a>
+    <a ui-sref=".myfoods" class="btn btn-primary myfoods" ng-class="getClass('/eat/myfoods')">My Foods</a>
+    <a ui-sref=".mymeals" class="btn btn-primary mymeals" ng-class="getClass('/eat/mymeals')">My Meals</a>
+</div>
 
 <div class="row" style="margin-top: 10px">
     <div class="col-md-7">

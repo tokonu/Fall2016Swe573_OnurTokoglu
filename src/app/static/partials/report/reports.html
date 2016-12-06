@@ -1,29 +1,29 @@
 
 <div id="reports" class="row">
-    <div class="col-md-2 button-col">
+    <div class="col-md-2 button-col reports-buttons" ng-controller="TopbarCtrl">
         <div class="row">
             <div class="col-md-12">
-                <a ui-sref=".myfoods" class="btn btn-primary">My Foods</a>
+                <a ui-sref=".myfoods" class="btn btn-primary" ng-class="getClass('/reports/myfoods')">My Foods</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a ui-sref=".myactivities" class="btn btn-primary">My Activities</a>
+                <a ui-sref=".myactivities" class="btn btn-primary" ng-class="getClass('/reports/myactivities')">My Activities</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a ui-sref=".balance" class="btn btn-primary">Balance</a>
+                <a ui-sref=".balance" class="btn btn-primary" ng-class="getClass('/reports/balance')">Balance</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a ui-sref=".nutrition" class="btn btn-primary">Nutrition</a>
+                <a ui-sref=".nutrition" class="btn btn-primary" ng-class="getClass('/reports/nutrition')">Nutrition</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a ui-sref=".weight" class="btn btn-primary">Weight</a>
+                <a ui-sref=".weight" class="btn btn-primary" ng-class="getClass('/reports/weight')">Weight</a>
             </div>
         </div>
     </div>

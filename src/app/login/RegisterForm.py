@@ -27,11 +27,11 @@ class RegisterForm():
             return "Enter Birthday"
         else:
             try:
-                dateobj = datetime.strptime(self.birthday,'%Y-%m-%d')
+                dateobj = datetime.strptime(self.birthday,'%d-%m-%Y')
             except Exception as e:
                 print("date conversion error ")
                 print(e)
-                return "Enter birthday in YYYY-MM-DD format"
+                return "Enter birthday in DD-MM-YYYY format"
 
         if self.height is None or self.height == "":
             return "Enter height"

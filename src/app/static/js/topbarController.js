@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('TopbarCtrl',function ($scope, UserInfoService, $http) {
+app.controller('TopbarCtrl',function ($scope, UserInfoService, $http, $location) {
     $scope.user = UserInfoService.getUser();
     $scope.user.bmi = function () {
         return ($scope.user.weight / Math.pow($scope.user.height/100,2)).toFixed(1);
@@ -37,6 +37,10 @@ app.controller('TopbarCtrl',function ($scope, UserInfoService, $http) {
             });
     };
 
+    $scope.getClass = function (path) {
+        return ($location.path().substr(0, path.length) === path) ? 'active' : '';
+    };
+
     var setLoading = function () {
         $(function () {
             var $btn = $('#profileSubmitButton').button('loading');
@@ -54,5 +58,7 @@ app.controller('TopbarCtrl',function ($scope, UserInfoService, $http) {
             $('#editModal').modal('hide')
         });
     };
+
+
 
 });

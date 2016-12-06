@@ -33,7 +33,7 @@ def editUser():
     current_user.password = form.password
     current_user.name = form.name
     #current_user.birthday = form.birthday
-    current_user.birthday = datetime.strptime(form.birthday, '%Y-%m-%d')
+    current_user.birthday = datetime.strptime(form.birthday, '%d-%m-%Y')
     current_user.weight = form.weight
     current_user.height = form.height
     current_user.gender = form.gender

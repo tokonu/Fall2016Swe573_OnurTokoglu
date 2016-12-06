@@ -11,7 +11,8 @@ from datetime import datetime
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect(url_for('userarea'))
+    #return render_template('index.html')
 
 
 @app.before_request
@@ -24,7 +25,7 @@ def _jinja2_filter_datetime(date, fmt=None):
     return date.strftime('%d-%m-%Y')
 
 
-login_manager.login_view = 'index'
+login_manager.login_view = 'login'
 
 
 @login_manager.user_loader
@@ -74,7 +75,7 @@ def register():
 
     user = User(form)
     user.password = hash.encrypt(user.password)
-    user.birthday = datetime.strptime(user.birthday,'%Y-%m-%d') #for sqlite
+    user.birthday = datetime.strptime(user.birthday,'%d-%m-%Y') #for sqlite
 
     try:
         db.session.add(user)

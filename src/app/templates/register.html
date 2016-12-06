@@ -99,7 +99,7 @@
                   <div class="col-md-6">
                       <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3">Email</span>
-                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="email" >
+                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="email" value="{{ request.form.email }}">
                       </div>
                   </div>
                   <div class="col-md-6">
@@ -114,19 +114,17 @@
                   <div class="col-md-6">
                       <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3">Name</span>
-                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="name"   >
+                          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="name" value="{{ request.form.name }}" >
                       </div>
                   </div>
                   <div class="col-md-6">
-                      <datepicker date-format="yyyy-MM-dd" selector="form-control">
-                          <div class="input-group">
-                              <span class="input-group-addon" id="basic-addon3">Birthday</span>
-                              <input class="form-control" name="birthday" placeholder="Choose a date"  />
-                              <span class="input-group-addon" style="cursor: pointer">
-                                  <i class="fa fa-lg fa-calendar"></i>
-                              </span>
-                          </div>
-                      </datepicker>
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon3">Birthday</span>
+                          <input class="form-control" name="birthday" placeholder="DD-MM-YYYY"  value="{{ request.form.birthday }}"/>
+                          <span class="input-group-addon" style="cursor: pointer">
+                              <i class="fa fa-lg fa-calendar"></i>
+                          </span>
+                      </div>
                   </div>
               </div>
 
@@ -134,14 +132,14 @@
                   <div class="col-md-4">
                       <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3">Weight</span>
-                          <input type="text" class="form-control weight" id="basic-url" aria-describedby="basic-addon3" name="weight"   >
+                          <input type="text" class="form-control weight" id="basic-url" aria-describedby="basic-addon3" name="weight"  value="{{ request.form.weight }}" >
                           <b class="unit">kg</b>
                       </div>
                   </div>
                   <div class="col-md-4">
                       <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3">Height</span>
-                          <input type="text" class="form-control height" id="basic-url" aria-describedby="basic-addon3" name="height"   >
+                          <input type="text" class="form-control height" id="basic-url" aria-describedby="basic-addon3" name="height"  value="{{ request.form.height }}" />
                           <b class="unit">cm</b>
                       </div>
                   </div>
@@ -156,7 +154,7 @@
 
               <div class="input-group">
                   <span class="input-group-addon" id="basic-addon3">Notes</span>
-                  <textarea type="text" class="form-control" id="basic-url" rows="3" aria-describedby="basic-addon3" name="notes"  ></textarea>
+                  <textarea type="text" class="form-control" id="basic-url" rows="3" aria-describedby="basic-addon3" name="notes" >{{ request.form.notes }}</textarea>
               </div>
 
               {% if err is defined %}
@@ -166,7 +164,7 @@
               {% endif %}
 
           <div class="modal-footer">
-              <a href="/"><input type="button" class="btn btn-default"  value="Home" /></a>
+              <a href="/login"><input type="button" class="btn btn-default"  value="Login" /></a>
               <input id="profileSubmitButton" type="submit"  class="btn btn-primary" value="Register"  />
 
           </div>

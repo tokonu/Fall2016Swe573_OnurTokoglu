@@ -53,9 +53,17 @@
 </div>
 
 
-<a ui-sref="eat" class="btn btn-primary">food</a>
-<a ui-sref="activity" class="btn btn-primary">activity</a>
-<a ui-sref="reports" class="btn btn-primary">reports</a>
+<div class="topbar-buttons">
+    <div class="button-container">
+        <a ui-sref="eat" class="eat"><i class="fa fa-cutlery fa-3x" aria-hidden="true" ng-class="getClass('/eat')"></i></a>
+        <a ui-sref="activity" class="activity"><i class="fa fa-heartbeat fa-3x" aria-hidden="true" ng-class="getClass('/activity')"></i></a>
+        <a ui-sref="reports" class="reports"><i class="fa fa-area-chart fa-3x" aria-hidden="true" ng-class="getClass('/reports')"></i></a>
+    </div>
+</div>
+
+
+
+
 
 <!-- Edit Modal -->
 
@@ -93,7 +101,7 @@
                       </div>
                   </div>
                   <div class="col-md-6">
-                      <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                      <datepicker date-format="dd-MM-yyyy" selector="form-control">
                           <div class="input-group">
                               <span class="input-group-addon" id="basic-addon3">Birthday</span>
                               <input class="form-control" name="birthday" placeholder="Choose a date" ng-model="updatedUser.birthday" value="{{ user.birthday }}"/>
