@@ -14,6 +14,8 @@ For additional information and design documents see wiki
 
 Additional links:
 
+[Time tracking](https://onur.myjetbrains.com/youtrack/reports/time/116-1)
+
 [Research Notes](research/research.md)
 
 [Requirements](research/requirements.md)
