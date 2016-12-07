@@ -3,17 +3,24 @@ from datetime import datetime
 
 class RegisterForm():
     def __init__(self, form):
-        self.email = form['email']
-        self.password = form['password']
-        self.name = form['name']
-        self.birthday = form['birthday']
-        self.height = form['height']
-        self.weight = form['weight']
-        self.gender = form['gender']
-        self.notes = form['notes']
+        try:
+            self.email = form['email']
+            self.password = form['password']
+            self.name = form['name']
+            self.birthday = form['birthday']
+            self.height = form['height']
+            self.weight = form['weight']
+            self.gender = form['gender']
+            self.notes = form['notes']
+            self.invalid = False
+        except:
+            self.invalid = True
 
     @property
     def validate(self) -> str:
+        if self.invalid:
+            return "Invalid form"
+
         if re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email) is None:
             return "Invalid email"
 
