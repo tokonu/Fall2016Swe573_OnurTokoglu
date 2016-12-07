@@ -1,6 +1,7 @@
 # Fall2016Swe573_OnurTokoglu Food Tracker App
 
 [![Build Status](https://travis-ci.org/tokonu/Fall2016Swe573_OnurTokoglu.svg?branch=master)](https://travis-ci.org/tokonu/Fall2016Swe573_OnurTokoglu)
+[![Coverage Status](https://coveralls.io/repos/github/tokonu/Fall2016Swe573_OnurTokoglu/badge.svg)](https://coveralls.io/github/tokonu/Fall2016Swe573_OnurTokoglu)
 
 This is the project repo for a food tracker web application that is done as a part of Swe573 course.
 The application will be able to track daily calorie consumption and expenditure. The user will be able to
