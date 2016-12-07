@@ -1,5 +1,7 @@
 # Fall2016Swe573_OnurTokoglu Food Tracker App
 
+[![Build Status](https://travis-ci.org/tokonu/Fall2016Swe573_OnurTokoglu.svg?branch=master)](https://travis-ci.org/tokonu/Fall2016Swe573_OnurTokoglu)
+
 This is the project repo for a food tracker web application that is done as a part of Swe573 course.
 The application will be able to track daily calorie consumption and expenditure. The user will be able to
 input daily consumption and activities. Food options will be provided by the application by using [USDA Food Database.](https://ndb.nal.usda.gov/ndb/doc)
