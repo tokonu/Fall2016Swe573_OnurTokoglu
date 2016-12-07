@@ -6,5 +6,6 @@ python:
 install:
   - pip install -r src/requirements.txt
 # command to run tests
+before_script: cd src
 script:
-  - python src/tests.py
+  - python tests.py
