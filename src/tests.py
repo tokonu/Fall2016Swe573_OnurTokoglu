@@ -100,7 +100,11 @@ class TestCase(unittest.TestCase):
             if counter > 1:
                 break
 
+        self.assertEqual(2, len(foods), "test_search_food_and_add_meal food count not 2")
         self.save_food_consumption(foods)
+        self.get_my_foods()
+        self.get_my_foods_for_dates()
+        self.get_my_recipes()
 
 
     def get_nutrients_for_food(self, ndbno):
@@ -120,7 +124,7 @@ class TestCase(unittest.TestCase):
         data = dict(
             mealbox=dict(
                 foods=foods,
-                date="01-01-2016",
+                date="10-01-2016",
                 name="meal"
             )
         )
@@ -128,6 +132,36 @@ class TestCase(unittest.TestCase):
         self.assertEqual(resp.status_code, 200, "Save food consumption status not 200")
         responseStr = resp.data.decode('utf-8')
         self.assertEqual(responseStr, "ok", "Save food consumption failed")
+
+    def get_my_foods(self):
+        resp = self.app.post('/userarea/getMyFoods')
+        self.assertEqual(resp.status_code, 200, "Get my foods status not 200")
+        returnedJson = json.loads(resp.data.decode('utf-8'))
+        self.assertEqual(2, len(returnedJson['foods']), "Returned my foods count not 2")
+
+    def get_my_foods_for_dates(self):
+        data = dict(to="10-01-2016")
+        data['from'] = "09-01-2016"
+        resp = self.app.post('/userarea/getMyFoodsForDates', data=json.dumps(data), content_type='application/json')
+        self.assertEqual(resp.status_code, 200, "Get my foods status not 200")
+        foods = json.loads(resp.data.decode('utf-8'))['foodHist'][0]["foods"]
+        self.assertEqual(2, len(foods), "Get my foods for dates count not 2")
+
+
+    def get_my_recipes(self):
+        resp = self.app.post('/userarea/getMyRecipes')
+        self.assertEqual(resp.status_code, 200, "Get my recipes status not 200")
+        returnedJson = json.loads(resp.data.decode('utf-8'))
+        self.assertEqual(1, len(returnedJson['recipes']), "Returned my recipes count not 2")
+        for recipeId in returnedJson['recipes']:
+            self.get_foods_in_recipe(recipeId)
+            break
+
+    def get_foods_in_recipe(self, recipeId):
+        resp = self.app.post('/userarea/getFoodsInRecipe/' + str(recipeId))
+        self.assertEqual(resp.status_code, 200, "Get foods in recipe status not 200")
+        returnedJson = json.loads(resp.data.decode('utf-8'))
+        self.assertEqual(2, len(returnedJson['foods']), "Get foods in recipe food count not 2")
 
 
 

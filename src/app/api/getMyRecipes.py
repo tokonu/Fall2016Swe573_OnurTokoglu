@@ -62,7 +62,7 @@ def getFoodsInRecipe(recipeId):
         foodsDict[foodObj.food_ndbno] = foodDict
 
     print("getfoodsinrecipes returned " + str(len(foodsDict)))
-    return jsonify({"foods":foodsDict})
+    return jsonify({"foods": foodsDict})
 
 
 
