@@ -5,7 +5,10 @@ python:
 # command to install dependencies
 install:
   - pip install -r src/requirements.txt
+  - pip install coveralls
 # command to run tests
 before_script: cd src
 script:
-  - python tests.py
+  coverage run tests.py
+after_success:
+  coveralls
