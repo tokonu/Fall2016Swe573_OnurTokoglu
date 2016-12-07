@@ -11,6 +11,7 @@ from app.models.RecipeHasFood import RecipeHasFood
 from datetime import datetime
 from app.models.Recipe import Recipe
 
+
 @app.route('/userarea/saveFoodConsumption', methods=['POST'])
 @login_required
 def saveFoodConsumption():

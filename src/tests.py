@@ -1,7 +1,5 @@
-#!flask/bin/python
-import os
 import unittest
-
+import json
 from app import flask_app as app
 from app import db
 
@@ -18,6 +16,11 @@ class TestCase(unittest.TestCase):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+
+
+
+
+    ## LOGIN RELATED
 
     def test_index_redirect(self):
         resp = self.app.get('/')
@@ -68,7 +71,65 @@ class TestCase(unittest.TestCase):
         self.register()
         self.logout()
         resp = self.login("a@a.com", "aaaaa")
-        self.assertEqual(resp.status_code, 302, "Login didn't redirect")
+        self.assertEqual(resp.status_code, 302, "Login not successful or didn't redirect ")
+        self.assertIn('/userarea', resp.location, "Not redirecting to userarea")
+
+
+
+    ## FOOD RELATED
+
+
+    def test_search_food_and_add_meal(self):
+        self.register()
+        data = dict(
+            query="cheese"
+        )
+        resp = self.app.post('userarea/searchFood', data=json.dumps(data), content_type='application/json')
+        self.assertEqual(resp.status_code, 200, "Search foods status code not 200")
+        returnedFoods = json.loads(resp.data.decode('utf-8'))["list"]
+
+        counter = 0
+        foods = {}
+        for ndbno in returnedFoods:
+            food = returnedFoods[ndbno]
+            food['nutrients'], food['measures'] = self.get_nutrients_for_food(ndbno)
+            food['selectedMeasure'] = food['measures'][0]
+
+            foods[ndbno] = food
+            counter += 1
+            if counter > 1:
+                break
+
+        self.save_food_consumption(foods)
+
+
+    def get_nutrients_for_food(self, ndbno):
+        data = dict(
+            ndbno=ndbno
+        )
+        resp = self.app.post('userarea/getNutrients', data=json.dumps(data), content_type='application/json')
+        self.assertEqual(resp.status_code, 200, "Search nutrients status code not 200")
+        returnedJson = json.loads(resp.data.decode('utf-8'))
+        self.assertIn('nutrients', returnedJson, "Search nutrients result doesn't contain nutrients")
+        self.assertIn('measures', returnedJson, "Search nutrients result doesn't contain measures")
+        nutrients = returnedJson['nutrients']
+        measures = returnedJson['measures']
+        return nutrients, measures
+
+    def save_food_consumption(self, foods):
+        data = dict(
+            mealbox=dict(
+                foods=foods,
+                date="01-01-2016",
+                name="meal"
+            )
+        )
+        resp = self.app.post('userarea/saveFoodConsumption', data=json.dumps(data), content_type='application/json')
+        self.assertEqual(resp.status_code, 200, "Save food consumption status not 200")
+        responseStr = resp.data.decode('utf-8')
+        self.assertEqual(responseStr, "ok", "Save food consumption failed")
+
+
 
 if __name__ == '__main__':
     unittest.main()
