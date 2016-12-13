@@ -15,7 +15,17 @@ An interactive mockup of the project is done with ninjamock. [Mockup](https://ni
 
 For additional information and design documents see wiki
 
-Additional links:
+## Installation
+
+You may find the details [here](https://github.com/tokonu/Fall2016Swe573_OnurTokoglu/wiki/Installation)
+
+## Demo
+
+Live version of the project can be found [here](ec2-54-174-216-122.compute-1.amazonaws.com)
+
+## Additional links
+
+[Project Plan](https://github.com/tokonu/Fall2016Swe573_OnurTokoglu/wiki/Project-Plan)
 
 [Time tracking](https://onur.myjetbrains.com/youtrack/reports/time/116-1)
 
