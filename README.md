@@ -21,7 +21,10 @@ You may find the details [here](https://github.com/tokonu/Fall2016Swe573_OnurTok
 
 ## Demo
 
-Live version of the project can be found [here](http://ec2-54-174-216-122.compute-1.amazonaws.com)
+Live version of the project can be found [here](http://ec2-54-174-216-122.compute-1.amazonaws.com) <br>
+Demo account: <br>
+email: onur@gmail.com <br>
+pass: aaaaa
 
 ## Additional links
 
