@@ -83,6 +83,7 @@ def getNutrientHistory():
                 break
             elif date == uafObj.date:
                 nutrients[nut_id]["history"][i]["consumption"] += consumption
+                break
             elif i == len(nutrients[nut_id]["history"]) - 1:
                 nutrients[nut_id]["history"].append(histDict)
                 break
